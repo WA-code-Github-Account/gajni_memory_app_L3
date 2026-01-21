@@ -48,7 +48,7 @@ const useMemories = () => {
         if (error && error.code !== '42P01') { // 42P01 means table doesn't exist
           console.error('Supabase connection test failed:', error);
         } else if (error && error.code === '42P01') {
-          console.warn('Memories table does not exist in Supabase. Please create it using the SQL provided in the setup instructions.');
+          console.warn('Memories table does not exist in Supabase. Data will be stored in local storage only.');
         } else {
           console.log('Supabase connection OK');
         }

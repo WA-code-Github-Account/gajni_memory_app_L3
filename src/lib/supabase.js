@@ -22,8 +22,13 @@ if (typeof window !== 'undefined') {
 
   // Create Supabase client only if both variables are present
   if (supabaseUrl && supabaseKey) {
-    supabase = createClient(supabaseUrl, supabaseKey);
-    console.log('Supabase client initialized successfully');
+    try {
+      supabase = createClient(supabaseUrl, supabaseKey);
+      console.log('Supabase client initialized successfully');
+    } catch (error) {
+      console.error('Error initializing Supabase client:', error);
+      supabase = null;
+    }
   } else {
     console.warn('Supabase client not initialized due to missing environment variables. Local storage will be used as fallback.');
   }
